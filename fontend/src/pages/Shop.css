@@ -1,0 +1,149 @@
+.shop-container {
+  padding: 60px 8%;
+  background: #f8fafc;
+}
+
+.shop-container h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* FILTER */
+.filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.filters input {
+  flex: 1;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f1f5f9;
+}
+
+.filters select {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f1f5f9;
+}
+
+/* GRID */
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* CARD */
+.shop-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+  border: 1px solid #eee;
+}
+
+.shop-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+/* IMAGE */
+.shop-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* BADGES */
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #ef4444;
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.best {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #111;
+  color: white;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* TEXT */
+.category {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 10px;
+}
+
+.shop-card h3 {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.price {
+  font-weight: 700;
+}
+
+.old-price {
+  text-decoration: line-through;
+  font-size: 13px;
+  color: #94a3b8;
+  margin-left: 8px;
+}
+
+.rating {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* BUTTON */
+.shop-card button {
+  margin-top: 12px;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .shop-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .shop-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .shop-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+}

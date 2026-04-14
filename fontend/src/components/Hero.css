@@ -1,0 +1,123 @@
+/* =======================
+   HERO CONTAINER
+======================= */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 10%;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: #e5e7eb;
+  border-radius: 20px;
+  min-height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* =======================
+   GLOW EFFECT
+======================= */
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: #3b82f6;
+  filter: blur(120px);
+  top: -100px;
+  right: -100px;
+  opacity: 0.2;
+}
+
+/* =======================
+   LEFT CONTENT
+======================= */
+.hero-left {
+  max-width: 520px;
+  z-index: 2;
+}
+
+.hero-left h4 {
+  font-weight: 400;
+  margin-bottom: 15px;
+  color: #fffffff1;
+}
+
+.hero-left h1 {
+  font-size: 52px;
+  margin-bottom: 25px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* =======================
+   BUTTON
+======================= */
+.shop-btn {
+  padding: 14px 30px;
+  background: #3b82f6;
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.shop-btn:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* =======================
+   RIGHT IMAGE
+======================= */
+.hero-right {
+  z-index: 2;
+}
+
+.hero-right img {
+  width: 420px;
+  transition: 0.4s ease;
+}
+
+.hero-right img:hover {
+  transform: scale(1.08) rotate(2deg);
+}
+
+/* =======================
+   DOTS DECORATION
+======================= */
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 10px;
+  background: radial-gradient(circle, #fff 20%, transparent 20%);
+  background-size: 20px 10px;
+  opacity: 0.3;
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 50px 20px;
+  }
+
+  .hero-left h1 {
+    font-size: 34px;
+  }
+
+  .hero-right img {
+    width: 280px;
+    margin-top: 30px;
+  }
+}

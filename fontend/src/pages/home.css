@@ -1,0 +1,15 @@
+.home-features {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px;
+  background: #f5f5f5;
+}
+
+.home-feature {
+  text-align: center;
+}
+
+.icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}

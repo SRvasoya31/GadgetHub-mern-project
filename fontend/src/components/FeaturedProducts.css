@@ -1,0 +1,21 @@
+.featured-section {
+  padding: 60px 8%;
+  background: #f8fafc;
+}
+
+.featured-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.featured-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.view-all {
+  color: #2563eb;
+  cursor: pointer;
+}

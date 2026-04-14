@@ -1,0 +1,87 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #111827;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: sticky;
+  top: 0;
+
+  overflow-y: auto; /* 🔥 scroll */
+}
+
+/* SCROLLBAR */
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: #2563eb;
+  border-radius: 10px;
+}
+
+/* LOGO */
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.logo span {
+  color: #2563eb;
+}
+
+/* MENU */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+/* LINK */
+.sidebar li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+/* HOVER */
+.sidebar li:hover {
+  background: #1f2937;
+  transform: translateX(5px);
+}
+
+/* ACTIVE */
+.sidebar li.active {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+/* LOGOUT */
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.logout:hover {
+  background: #1f2937;
+  color: white;
+}

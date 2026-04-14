@@ -1,0 +1,183 @@
+/* CONTAINER */
+.shop-container {
+  padding: 60px 8%;
+  background: #f8fafc;
+}
+
+.shop-container h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+/* FILTER */
+.filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.filters input,
+.filters select {
+  flex: 1;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f1f5f9;
+  outline: none;
+  transition: 0.3s;
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: #2563eb;
+  background: #fff;
+}
+
+/* GRID */
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+/* CARD */
+.shop-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid #eee;
+  overflow: hidden;
+}
+
+.shop-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+/* IMAGE */
+.shop-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 14px;
+  transition: 0.4s;
+}
+
+.shop-card:hover img {
+  transform: scale(1.05);
+}
+
+/* BADGES */
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #ef4444;
+  color: white;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.best {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #111827;
+  color: white;
+  font-size: 11px;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+/* TEXT */
+.category {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.shop-card h3 {
+  font-size: 16px;
+  margin: 6px 0;
+  color: #111827;
+}
+
+/* PRICE */
+.price {
+  font-weight: 700;
+  font-size: 17px;
+  color: #111827;
+}
+
+.old-price {
+  text-decoration: line-through;
+  font-size: 13px;
+  color: #94a3b8;
+  margin-left: 8px;
+}
+
+/* RATING */
+.rating {
+  font-size: 13px;
+  color: #f59e0b;
+  margin-top: 3px;
+}
+
+/* BUTTON */
+.shop-card button {
+  margin-top: 12px;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.shop-card button:hover {
+  transform: scale(1.03);
+}
+
+/* CLICK EFFECT */
+.shop-card button:active {
+  transform: scale(0.95);
+}
+
+/* ADDED STATE */
+.shop-card button.added {
+  background: #16a34a;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .shop-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .shop-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .shop-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+}

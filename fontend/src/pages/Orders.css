@@ -1,0 +1,113 @@
+.orders-container {
+  padding: 60px 10%;
+  background: #0f172a;
+  min-height: 100vh;
+  color: #e5e7eb;
+}
+
+.orders-container h2 {
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* CARD */
+.order-card {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+  border: 1px solid #334155;
+  transition: 0.3s;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+}
+
+/* HEADER */
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-id {
+  font-weight: 600;
+}
+
+.order-date {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* STATUS */
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status.paid,
+.status.delivered {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.status.shipped {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.status.pending {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+/* ITEM */
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.order-item img {
+  width: 60px;
+  border-radius: 10px;
+  background: white;
+}
+
+.item-info p {
+  font-weight: 600;
+}
+
+.item-info span {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* FOOTER */
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* BUTTON */
+.invoice-btn {
+  padding: 10px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.invoice-btn:hover {
+  background: #2563eb;
+}

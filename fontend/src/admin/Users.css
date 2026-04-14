@@ -1,0 +1,119 @@
+.users-page {
+  color: white;
+  padding: 20px;
+}
+
+/* SEARCH */
+.search-box {
+  width: 250px;
+  padding: 10px;
+  margin-bottom: 20px;
+  background: #0f172a;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  color: white;
+}
+
+/* TABLE */
+.users-table {
+  background: #0f172a;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* HEADER + ROW */
+.table-head,
+.table-row {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 1fr 1fr;
+  padding: 15px;
+  border-bottom: 1px solid #1f2937;
+  align-items: center;
+}
+
+.table-head {
+  background: #020617;
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+/* HOVER */
+.table-row:hover {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+/* USER */
+.table-row div {
+  display: flex;
+  flex-direction: column;
+}
+
+.email {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* STATUS */
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.status.active {
+  background: rgba(34,197,94,0.2);
+  color: #22c55e;
+}
+
+.status.blocked {
+  background: rgba(239,68,68,0.2);
+  color: #ef4444;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.icon {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+.block { color: orange; }
+.unblock { color: #22c55e; }
+.delete { color: red; }
+
+/* PAGINATION */
+.pagination {
+  margin-top: 15px;
+}
+
+.pagination button {
+  margin-right: 5px;
+  padding: 6px 12px;
+  background: #1f2937;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background: #2563eb;
+}
+
+/* TOAST */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #22c55e;
+  padding: 10px 20px;
+  border-radius: 10px;
+}

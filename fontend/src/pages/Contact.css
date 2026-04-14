@@ -1,0 +1,94 @@
+/* =======================
+   CONTAINER
+======================= */
+.contact-container {
+  padding: 60px 10%;
+  background: #0f172a;
+  color: #e5e7eb;
+  min-height: 100vh;
+  text-align: center;
+}
+
+/* TITLE */
+.contact-container h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.contact-sub {
+  color: #94a3b8;
+  margin-bottom: 40px;
+}
+
+/* =======================
+   FORM
+======================= */
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* INPUT ROW */
+.input-row {
+  display: flex;
+  gap: 15px;
+}
+
+/* INPUT */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 14px;
+}
+
+/* TEXTAREA */
+.contact-form textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+/* FOCUS */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #3b82f6;
+  outline: none;
+}
+
+/* BUTTON */
+.contact-form button {
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #3b82f6;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: #2563eb;
+}
+
+/* RESULT */
+.result {
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+@media (max-width: 768px) {
+  .input-row {
+    flex-direction: column;
+  }
+}

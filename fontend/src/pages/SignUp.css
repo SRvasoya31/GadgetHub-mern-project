@@ -1,0 +1,85 @@
+/* FULL PAGE CENTER */
+.auth-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f8fafc;
+}
+
+/* LOGO */
+.logo {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.logo span {
+  color: #2563eb;
+}
+
+/* TITLE */
+.auth-container h2 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+/* CARD */
+.auth-box {
+  width: 400px;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+/* LABEL */
+.auth-box label {
+  font-size: 13px;
+  color: #374151;
+}
+
+/* INPUT */
+.auth-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 15px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f1f5f9;
+}
+
+/* BUTTON */
+.auth-box button {
+  width: 100%;
+  padding: 12px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-box button:hover {
+  background: #1d4ed8;
+}
+
+/* LINK */
+.bottom-text {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.bottom-text a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
