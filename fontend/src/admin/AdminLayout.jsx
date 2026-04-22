@@ -9,7 +9,7 @@ const AdminLayout = () => {
       <Sidebar />
 
       <div className="admin-content">
-        <Outlet />   {/* 🔥 VERY IMPORTANT */}
+        <Outlet />
       </div>
     </div>
   );

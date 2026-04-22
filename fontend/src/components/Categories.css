@@ -1,6 +1,7 @@
 /* SECTION */
 .categories-section {
-  padding: 60px 8%;
+  padding: 20px ;
+  padding-left: 65px;
   background: #f8fafc; /* match product section */
 }
 

@@ -12,6 +12,8 @@ import samsungImg from "../assets/products/samsung.jpg";
 import ps5Img from "../assets/products/ps5.jpg";
 import ps5DigitalImg from "../assets/products/ps5-digital.jpg";
 
+const BASE_URL = "http://localhost:5000";
+
 const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -22,6 +24,19 @@ const ProductDetails = () => {
   const [selectedColor, setSelectedColor] = useState(null);
   const [added, setAdded] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
+
+  // ✅ IMAGE FIX FUNCTION
+  const getImage = (img) => {
+    if (!img) return defaultImage;
+
+    // local images (sample)
+    if (img.startsWith("http") || img.includes("assets")) {
+      return img;
+    }
+
+    // API images
+    return `${BASE_URL}/uploads/${img}`;
+  };
 
   // SAMPLE DATA
   const sampleProducts = [
@@ -65,7 +80,7 @@ const ProductDetails = () => {
 
   // FETCH PRODUCTS
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
+    fetch(`${BASE_URL}/api/products`)
       .then((res) => res.json())
       .then((data) => {
         const merged = [...sampleProducts, ...(data || [])];
@@ -75,7 +90,7 @@ const ProductDetails = () => {
 
         if (found) {
           setProduct(found);
-          setSelectedImage(found.image || defaultImage);
+          setSelectedImage(getImage(found.image));
         }
       })
       .catch(() => {
@@ -93,7 +108,10 @@ const ProductDetails = () => {
     return <h2 style={{ padding: "50px" }}>Loading...</h2>;
   }
 
-  const images = [product.image, ...(product.images || [])].filter(Boolean);
+  // ✅ FIX IMAGES ARRAY
+  const images = [product.image, ...(product.images || [])]
+    .filter(Boolean)
+    .map((img) => getImage(img));
 
   const formatPrice = (price) =>
     new Intl.NumberFormat("en-IN").format(price);
@@ -128,7 +146,6 @@ const ProductDetails = () => {
     setTimeout(() => setAdded(false), 1500);
   };
 
-  // BUY NOW
   const handleBuyNow = () => {
     const orderItem = {
       ...product,
@@ -144,11 +161,11 @@ const ProductDetails = () => {
     <>
       <Navbar />
 
-      {/* PRODUCT DETAILS */}
       <div className="details-container">
 
         {/* LEFT */}
         <div className="details-left">
+
           <div className="thumbnail-container">
             {images.map((img, index) => (
               <img
@@ -174,7 +191,6 @@ const ProductDetails = () => {
 
           <h1>{product.name}</h1>
 
-        
           <div className="price-row">
             <span className="new-price">
               ₹{formatPrice(product.price)}
@@ -191,7 +207,7 @@ const ProductDetails = () => {
             {product.description || "Premium product"}
           </p>
 
-          {/* COLOR */}
+          {/* COLORS */}
           {product.colors && (
             <div>
               <h4>Select Color</h4>
@@ -211,9 +227,7 @@ const ProductDetails = () => {
 
           {/* QUANTITY */}
           <div className="quantity-box">
-            <button onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}>
-              -
-            </button>
+            <button onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
             <span>{quantity}</span>
             <button onClick={() => setQuantity(quantity + 1)}>+</button>
           </div>
@@ -227,9 +241,9 @@ const ProductDetails = () => {
               {added ? "Added ✓" : "🛒 Add to Cart"}
             </button>
 
-            <button className="buy-btn" onClick={handleBuyNow}>
+            {/* <button className="buy-btn" onClick={handleBuyNow}>
               ⚡ Buy Now
-            </button>
+            </button> */}
           </div>
 
           {/* DELIVERY */}
@@ -252,9 +266,6 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-
-     
-
 
       <Footer />
     </>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ShopCard.css";
-// import defaultImage from "../assets/default-product.png";
 
 const ShopCard = ({ product }) => {
   const navigate = useNavigate();
@@ -30,6 +29,14 @@ const ShopCard = ({ product }) => {
     setTimeout(() => setAdded(false), 1500);
   };
 
+  // ✅ UNIVERSAL IMAGE FIX (LOCAL + API)
+  const imageUrl =
+    typeof product.image === "string"
+      ? product.image.startsWith("http")
+        ? product.image // API full URL
+        : product.image // local image already correct
+      : product.image; // imported image object
+
   return (
     <div
       className="shop-card"
@@ -45,7 +52,7 @@ const ShopCard = ({ product }) => {
 
       {/* IMAGE */}
       <img
-        src={product.image || defaultImage}
+        src={imageUrl || "https://via.placeholder.com/200"}
         alt={product.name}
       />
 
@@ -63,8 +70,6 @@ const ShopCard = ({ product }) => {
           </span>
         )}
       </div>
-
-     
 
       <button onClick={handleAddToCart}>
         {added ? "Added ✓" : "Add to Cart"}

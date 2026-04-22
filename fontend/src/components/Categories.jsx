@@ -15,7 +15,7 @@ const Categories = ({ activeCategory, setActiveCategory }) => {
     { name: "All", icon: <FaThLarge /> },
     { name: "Mobile", icon: <FaMobileAlt /> },
     { name: "Laptops", icon: <FaLaptop /> },
-    { name: "Audio", icon: <FaHeadphones /> },
+   
     { name: "Accessories", icon: <FaKeyboard /> },
     { name: "Gaming", icon: <FaGamepad /> }
   ];

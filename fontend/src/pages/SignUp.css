@@ -1,5 +1,12 @@
 /* FULL PAGE CENTER */
+
+h2,p{
+  color: black;
+}
 .auth-container {
+
+
+
   height: 100vh;
   display: flex;
   flex-direction: column;

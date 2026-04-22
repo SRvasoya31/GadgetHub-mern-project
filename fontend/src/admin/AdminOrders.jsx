@@ -11,7 +11,6 @@ const AdminOrders = () => {
     fetchOrders();
   }, []);
 
-  // ✅ FETCH ORDERS
   const fetchOrders = async () => {
     try {
       const { data } = await axios.get("http://localhost:5000/api/orders");
@@ -22,7 +21,6 @@ const AdminOrders = () => {
     }
   };
 
-  // ✅ UPDATE STATUS
   const updateStatus = async (id, status) => {
     setLoadingId(id);
     try {
@@ -39,144 +37,129 @@ const AdminOrders = () => {
     setLoadingId(null);
   };
 
-  // 📊 Dashboard calculations
   const totalRevenue = orders.reduce((sum, o) => sum + (o.total || 0), 0);
   const delivered = orders.filter((o) => o.status === "Delivered").length;
   const pending = orders.filter((o) => o.status === "Paid").length;
 
   return (
     <div className="orders-page">
-      <h1>Admin Orders</h1>
 
-      {/* 📊 DASHBOARD */}
-      <div className="dashboard">
-        <div className="card">
-          <h3>Total Orders</h3>
-          <p>{orders.length}</p>
+     
+        <h1>Admin Orders</h1>
+
+        {/* DASHBOARD */}
+        <div className="dashboard-orders">
+          <div className="card">
+            <h3>Total Orders</h3>
+            <p>{orders.length}</p>
+          </div>
+
+          <div className="card">
+            <h3>Total Revenue</h3>
+            <p>₹{totalRevenue}</p>
+          </div>
+
+          <div className="card">
+            <h3>Delivered</h3>
+            <p>{delivered}</p>
+          </div>
+
+          <div className="card">
+            <h3>Pending</h3>
+            <p>{pending}</p>
+          </div>
         </div>
+       <div className="orders-container-1">
 
-        <div className="card">
-          <h3>Total Revenue</h3>
-          <p>₹{totalRevenue}</p>
-        </div>
+        {/* TABLE */}
+        <div className="orders-table">
 
-        <div className="card">
-          <h3>Delivered</h3>
-          <p>{delivered}</p>
-        </div>
+          {/* HEADER */}
+          <div className="table-head-1">
+            <div>ID</div>
+            <div>Date</div>
+            <div>User</div>
+            <div>Products</div>
+            <div>Total</div>
+            <div>Status</div>
+            <div>Actions</div>
+          </div>
 
-        <div className="card">
-          <h3>Pending</h3>
-          <p>{pending}</p>
-        </div>
-      </div>
+          {/* ROWS */}
+          {orders.length === 0 ? (
+            <p style={{ padding: "20px" }}>No orders found</p>
+          ) : (
+            orders.map((order) => {
+              const orderId = order?._id || "";
 
-      {/* 📋 TABLE */}
-      <div className="orders-table">
+              return (
+                <div className="table-row-1" key={orderId}>
 
-        {/* HEADER */}
-        <div className="table-head">
-          <span>ID</span>
-          <span>Date</span>
-          <span>User</span>
-          <span>Products</span>
-          <span>Total</span>
-          <span>Status</span>
-          <span>Actions</span>
-        </div>
+                  <div className="order-id">
+                    #{orderId.slice(-5)}
+                  </div>
 
-        {/* DATA */}
-        {orders.length === 0 ? (
-          <p style={{ padding: "20px" }}>No orders found</p>
-        ) : (
-          orders.map((order) => {
-            const orderId = order?._id || "";
+                  <div>
+                    {order?.createdAt
+                      ? new Date(order.createdAt).toLocaleString()
+                      : "-"}
+                  </div>
 
-            return (
-              <div className="table-row" key={orderId}>
+                  <div>
+                    {order?.userId?.name || "Guest"}
+                  </div>
 
-                {/* ID */}
-                <span className="order-id">
-                  #{orderId.toString().slice(-5)}
-                </span>
-
-                {/* DATE */}
-                <span>
-                  {order?.createdAt
-                    ? new Date(order.createdAt).toLocaleString()
-                    : "-"}
-                </span>
-
-                {/* USER */}
-                <span>
-                  {order?.userId?.name || order?.userId?.email || "Guest"}
-                </span>
-
-                {/* PRODUCTS */}
-                <div className="product-list">
-                  {order?.items?.length > 0 ? (
-                    order.items.map((item, i) => (
+                  <div className="product-list">
+                    {order?.items?.map((item, i) => (
                       <div key={i} className="product-item">
-
                         <img
                           src={item.image || "https://via.placeholder.com/50"}
-                          alt={item.name}
                           className="product-img"
+                          alt=""
                         />
-
-                        <div>
-                          <p>{item.name}</p>
-                          <small>
-                            Qty: {item.quantity} × ₹{item.price}
-                          </small>
-                        </div>
-
+                        <span>{item.name}</span>
                       </div>
-                    ))
-                  ) : (
-                    <span>No items</span>
-                  )}
+                    ))}
+                  </div>
+
+                  <div className="total">₹{order.total}</div>
+
+                  <div className={`status ${order.status.toLowerCase()}`}>
+                    {order.status}
+                  </div>
+
+                  <div className="actions">
+                    <select
+                      className="status-dropdown"
+                      value={order.status}
+                      disabled={loadingId === orderId}
+                      onChange={(e) =>
+                        updateStatus(orderId, e.target.value)
+                      }
+                    >
+                      <option>Paid</option>
+                      <option>Shipped</option>
+                      <option>Delivered</option>
+                      <option>Cancelled</option>
+                    </select>
+
+                    <button
+                      className="view-btn"
+                      onClick={() => setSelectedOrder(order)}
+                    >
+                      View
+                    </button>
+                  </div>
+
                 </div>
+              );
+            })
+          )}
+        </div>
 
-                {/* TOTAL */}
-                <span className="total">₹{order?.total || 0}</span>
-
-                {/* STATUS */}
-                <span className={`status ${order?.status?.toLowerCase()}`}>
-                  {order?.status}
-                </span>
-
-                {/* ACTIONS */}
-                <div className="actions">
-                  <select
-                    className="status-dropdown"
-                    value={order?.status}
-                    disabled={loadingId === orderId}
-                    onChange={(e) =>
-                      updateStatus(orderId, e.target.value)
-                    }
-                  >
-                    <option>Paid</option>
-                    <option>Shipped</option>
-                    <option>Delivered</option>
-                    <option>Cancelled</option>
-                  </select>
-
-                  <button
-                    className="view-btn"
-                    onClick={() => setSelectedOrder(order)}
-                  >
-                    View
-                  </button>
-                </div>
-
-              </div>
-            );
-          })
-        )}
       </div>
 
-      {/* 🔍 MODAL */}
+      {/* MODAL */}
       {selectedOrder && (
         <div className="modal">
           <div className="modal-content">
@@ -195,11 +178,6 @@ const AdminOrders = () => {
               </p>
             ))}
 
-            <h3>Address</h3>
-            <p>{selectedOrder?.address?.addressLine}</p>
-            <p>{selectedOrder?.address?.city}</p>
-            <p>{selectedOrder?.address?.pincode}</p>
-
             <button onClick={() => setSelectedOrder(null)}>
               Close
             </button>
@@ -207,6 +185,7 @@ const AdminOrders = () => {
           </div>
         </div>
       )}
+
     </div>
   );
 };

@@ -2,7 +2,7 @@
    COLOR SYSTEM
 ======================= */
 :root {
-  --bg: #0f172a;
+  --bg: #ffffffdf;
   --card: #1e293b;
   --card-hover: #334155;
   --text: #e5e7eb;
@@ -11,11 +11,14 @@
   --primary: #3b82f6;
   --primary-dark: #2563eb;
 }
-
+span{
+  color: white;
+}
 /* =======================
    MAIN CONTAINER
 ======================= */
 .cart-container {
+  
   padding: 60px 10%;
   background: var(--bg);
   min-height: 100vh;

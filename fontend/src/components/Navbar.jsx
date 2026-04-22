@@ -70,7 +70,7 @@ const Navbar = () => {
       </ul>
 
       {/* ICONS */}
-      <div className="nav-icons">
+      <div className="nav-icons-1">
 
         {/* Wishlist */}
         <FaHeart className="icon" />

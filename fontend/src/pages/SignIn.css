@@ -1,4 +1,10 @@
 /* PAGE */
+h2,p{
+  color: black;
+}
+*{
+  color: black,white;
+}
 .auth-container {
   height: 100vh;
   display: flex;
@@ -13,6 +19,7 @@
   font-size: 26px;
   font-weight: 700;
   margin-bottom: 10px;
+  color: black;
 }
 
 .logo span {
