@@ -4,7 +4,10 @@
   padding-left: 65px;
   background: #f8fafc; /* match product section */
 }
-
+.category-name{
+  color: #0f172a
+  ;
+}
 /* HEADER */
 .category-header {
   margin-bottom: 30px;

@@ -1,58 +1,3 @@
-// const mongoose = require("mongoose");
-
-// const orderSchema = new mongoose.Schema(
-//   {
-//     userId: {
-//       type: mongoose.Schema.Types.ObjectId,
-//       ref: "User",
-//       required: true,
-//     },
-
-//     items: [
-//       {
-//         name: String,
-//         price: Number,
-//         quantity: Number,
-//         image: String,
-//       },
-//     ],
-
-//     total: {
-//       type: Number,
-//       required: true,
-//     },
-
-//     // ✅ FIXED ENUM
-//     status: {
-//       type: String,
-//       enum: ["Pending", "Paid", "Shipped", "Delivered", "Cancelled"],
-//       default: "Paid",
-//     },
-
-//     paymentMethod: {
-//       type: String,
-//       enum: ["COD", "ONLINE"],
-//       default: "ONLINE",
-//     },
-
-//     paymentId: String,
-//     orderId: String,
-
-//     address: {
-//       fullName: String,
-//       phone: String,
-//       street: String,
-//       area: String,
-//       city: String,
-//       state: String,
-//       pincode: String,
-//     },
-//   },
-//   { timestamps: true }
-// );
-
-// module.exports = mongoose.model("Order", orderSchema);
-
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema(
@@ -60,18 +5,22 @@ const orderSchema = new mongoose.Schema(
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+      required: true,
     },
 
     items: [
       {
-        name: String,
-        price: Number,
-        quantity: Number,
+        name: { type: String, required: true },
+        price: { type: Number, required: true },
+        quantity: { type: Number, required: true },
         image: String,
       },
     ],
 
-    total: Number,
+    total: {
+      type: Number,
+      required: true,
+    },
 
     status: {
       type: String,
@@ -79,18 +28,24 @@ const orderSchema = new mongoose.Schema(
       default: "Paid",
     },
 
-    paymentMethod: String,
+    // ✅ ONLY ONLINE PAYMENT
+    paymentMethod: {
+      type: String,
+      enum: ["ONLINE"],
+      default: "ONLINE",
+    },
+
     paymentId: String,
     orderId: String,
 
     address: {
-      fullName: String,
-      phone: String,
-      street: String,
+      fullName: { type: String, required: true },
+      phone: { type: String, required: true },
+      street: { type: String, required: true },
       area: String,
-      city: String,
-      state: String,
-      pincode: String,
+      city: { type: String, required: true },
+      state: { type: String, required: true },
+      pincode: { type: String, required: true },
     },
   },
   { timestamps: true }

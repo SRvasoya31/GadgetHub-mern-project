@@ -44,37 +44,36 @@ const AdminOrders = () => {
   return (
     <div className="orders-page">
 
-     
-        <h1>Admin Orders</h1>
+      <h1>Admin Orders</h1>
 
-        {/* DASHBOARD */}
-        <div className="dashboard-orders">
-          <div className="card">
-            <h3>Total Orders</h3>
-            <p>{orders.length}</p>
-          </div>
-
-          <div className="card">
-            <h3>Total Revenue</h3>
-            <p>₹{totalRevenue}</p>
-          </div>
-
-          <div className="card">
-            <h3>Delivered</h3>
-            <p>{delivered}</p>
-          </div>
-
-          <div className="card">
-            <h3>Pending</h3>
-            <p>{pending}</p>
-          </div>
+      {/* DASHBOARD */}
+      <div className="dashboard-orders">
+        <div className="card">
+          <h3>Total Orders</h3>
+          <p>{orders.length}</p>
         </div>
-       <div className="orders-container-1">
+
+        <div className="card">
+          <h3>Total Revenue</h3>
+          <p>₹{totalRevenue}</p>
+        </div>
+
+        <div className="card">
+          <h3>Delivered</h3>
+          <p>{delivered}</p>
+        </div>
+
+        <div className="card">
+          <h3>Pending</h3>
+          <p>{pending}</p>
+        </div>
+      </div>
+
+      <div className="orders-container-1">
 
         {/* TABLE */}
         <div className="orders-table">
 
-          {/* HEADER */}
           <div className="table-head-1">
             <div>ID</div>
             <div>Date</div>
@@ -85,7 +84,6 @@ const AdminOrders = () => {
             <div>Actions</div>
           </div>
 
-          {/* ROWS */}
           {orders.length === 0 ? (
             <p style={{ padding: "20px" }}>No orders found</p>
           ) : (
@@ -156,29 +154,55 @@ const AdminOrders = () => {
             })
           )}
         </div>
-
       </div>
 
-      {/* MODAL */}
+      {/* ================= MODAL ================= */}
       {selectedOrder && (
-        <div className="modal">
-          <div className="modal-content">
+        <div className="modal-3" onClick={() => setSelectedOrder(null)}>
+          <div
+            className="modal-content-3"
+            onClick={(e) => e.stopPropagation()}
+          >
 
-            <h2>Order Details</h2>
+            <h2 className="h2">🧾 Order Details</h2>
 
-            <p><b>ID:</b> {selectedOrder._id}</p>
-            <p><b>User:</b> {selectedOrder?.userId?.name}</p>
-            <p><b>Total:</b> ₹{selectedOrder.total}</p>
-            <p><b>Status:</b> {selectedOrder.status}</p>
+            <p className="h2"><b>ID:</b> {selectedOrder._id}</p>
+            <p className="h2"><b>User:</b> {selectedOrder?.userId?.name}</p>
+            <p className="h2"><b>Total:</b> ₹{selectedOrder.total}</p>
 
-            <h3>Products</h3>
-            {selectedOrder.items.map((item, i) => (
-              <p key={i}>
-                {item.name} — {item.quantity} × ₹{item.price}
-              </p>
-            ))}
+            <div className={`status ${selectedOrder.status.toLowerCase()}`}>
+              {selectedOrder.status}
+            </div>
 
-            <button onClick={() => setSelectedOrder(null)}>
+            {/* ADDRESS */}
+            <h3 style={{ marginTop: "15px" }}>📍 Delivery Address</h3>
+
+            <div className="address-box">
+              <p className="h2"><b>Full Name:</b> {selectedOrder?.address?.fullName || "-"}</p>
+              <p className="h2"><b>Mobile:</b> {selectedOrder?.address?.phone || "-"}</p>
+              <p className="h2"><b>House / Street:</b> {selectedOrder?.address?.street || "-"}</p>
+              <p className="h2"><b>Area:</b> {selectedOrder?.address?.area || "-"}</p>
+              <p className="h2"><b>City:</b> {selectedOrder?.address?.city || "-"}</p>
+              <p className="h2"><b>State:</b> {selectedOrder?.address?.state || "-"}</p>
+              <p className="h2"><b>Pincode:</b> {selectedOrder?.address?.pincode || "-"}</p>
+            </div>
+
+            {/* PRODUCTS */}
+            <h3 style={{ marginTop: "15px" }}>Products</h3>
+
+            <div className="products-list">
+              {selectedOrder?.items?.map((item, i) => (
+                <div key={i} className="product-item">
+                  <span>{item.name}</span>
+                  <span>{item.quantity} × ₹{item.price}</span>
+                </div>
+              ))}
+            </div>
+
+            <button
+              className="close-btn"
+              onClick={() => setSelectedOrder(null)}
+            >
               Close
             </button>
 

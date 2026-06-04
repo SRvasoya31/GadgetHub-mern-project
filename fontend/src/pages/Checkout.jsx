@@ -211,7 +211,7 @@ const Checkout = () => {
 
                 <div>
                   <p>{item.name}</p>
-                  <span>Qty: {item.quantity}</span>
+                  <span className="span-1">Qty: {item.quantity}</span>
                 </div>
 
                 <strong>₹{formatPrice(item.price)}</strong>
@@ -222,8 +222,8 @@ const Checkout = () => {
           <hr />
 
           <div className="summary-total">
-            <span>Total</span>
-            <span>₹{formatPrice(totalPrice)}</span>
+            <span className="span-1">Total</span>
+            <span className="span-1">₹{formatPrice(totalPrice)}</span>
           </div>
 
           <button onClick={handlePayment} className="pay-btn">
